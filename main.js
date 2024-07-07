@@ -69,6 +69,7 @@ class PreferenceHandler {
 		this._videoChunks = [];
 	}
 
+	// set and get method for audio property
 	set audio(audio) {
 		this._audio = audio;
 	}
@@ -77,6 +78,7 @@ class PreferenceHandler {
 		return this._audio;
 	}
 
+	// set and get method for animationFrameReference property
 	set animationFrameReference(ref) {
 		this._animationFrameReference = ref;
 	}
@@ -85,6 +87,7 @@ class PreferenceHandler {
 		return this._animationFrameReference;
 	}
 
+	// set and get method for audioConfig property
 	set audioConfig(config) {
 		this._audioConfig = config;
 	}
@@ -93,6 +96,7 @@ class PreferenceHandler {
 		return this._audioConfig;
 	}
 
+	// set and get method for stream property
 	set setStream(stream) {
 		this._stream = stream;
 	}
@@ -101,6 +105,7 @@ class PreferenceHandler {
 		return this._stream;
 	}
 
+	// set and get method for recorder property
 	set setRecorder(recorder) {
 		this._recorder = recorder;
 	}
@@ -109,6 +114,7 @@ class PreferenceHandler {
 		return this._recorder;
 	}
 
+	// set and get method for recorderTimes property
 	set setRecorderTimes(times) {
 		this._recorderTimes = times;
 	}
@@ -117,6 +123,7 @@ class PreferenceHandler {
 		return this._recorderTimes;
 	}
 
+	// set and get method for videoChunks property
 	set setVideoChunks(videoChunks) {
 		this._videoChunks = videoChunks;
 	}
@@ -129,7 +136,7 @@ class PreferenceHandler {
 /* Initiating PreferenceHandler */
 const prefObj = new PreferenceHandler();
 
-/* Setting Preferences */
+/* Setting Preferences function*/
 function setPreference() {
 	visualizerType.value = (getLocalStorage('visualizer.visualizerType') == null) ? visualizerType.options[0].value : getLocalStorage('visualizer.visualizerType'); 
 	fftBand.value = (getLocalStorage('visualizer.fftBand') == null) ? fftBand.options[0].value : getLocalStorage('visualizer.fftBand'); 
@@ -142,6 +149,7 @@ function setPreference() {
 	backgroundColor.value = (getLocalStorage('visualizer.backgroundColor') == null) ? backgroundColor.value : getLocalStorage('visualizer.backgroundColor'); 
 }
 
+// set and get function for localStorage
 function setLocalStorage(name, value) {
 	localStorage.setItem(name, value);
 	return;
@@ -151,11 +159,13 @@ function getLocalStorage(name) {
 	return localStorage.getItem(name); 
 }
 
+// set function for CanvasSize
 function setCanvasSize(width='', height='') {
 	canvas.width = (width != '') ? width : canvasWidth.value;
 	canvas.height = (height != '') ? height: canvasHeight.value;
 }
 
+// set function for CanvasBackground
 function setCanvasBackground(color='') {
 	if (backgroundColor.value == '#000000' || color == '#000000') {
 		canvas.style.backgroundColor = (color != '') ? color : backgroundColor.value;
@@ -165,6 +175,7 @@ function setCanvasBackground(color='') {
 	}
 }
 
+// start visualizer function
 function startVisualizer(prefObj) {
 
 	if (prefObj.audioConfig == null) {
@@ -175,6 +186,7 @@ function startVisualizer(prefObj) {
 
 }
 
+// stop visualizer function
 function stopVisualizer(prefObj) {
 	prefObj.audio.pause();
 	canvasCTX.clearRect(0,0, canvas.width, canvas.height);
@@ -185,6 +197,7 @@ function stopVisualizer(prefObj) {
 	}
 }
 
+// handle visualization function
 function handleVisualizer(timeStamp=0, prefObj) {	
 	// setting canvas resolution
 	setCanvasSize();
@@ -205,6 +218,7 @@ function handleVisualizer(timeStamp=0, prefObj) {
 	});	
 }
 
+// Initialize Audio Configuration
 function initAudioConfiguration(prefObj) {
 	var audioCtx = new AudioContext();		
 	// getting audio as media element source
@@ -226,12 +240,14 @@ function initAudioConfiguration(prefObj) {
 	// unsigned 8 bit integer array in format from frequencyBinCount
 	var dataArray = new Uint8Array(bufferLength);
 
+	// setting audio configuration 
 	prefObj.audioConfig = {analyser: analyser, bufferLength: bufferLength, dataArray: dataArray};
 
 	return true;
 }
 
-/* Bar Visualizers */
+/* Bar Visualizers Types */
+// barVisualizer function 
 function barVisualizer() {
 
 	// clear everything in canvas drawing context
@@ -274,6 +290,7 @@ function barVisualizer() {
 	}			
 }
 
+// doubleBarVisualizer visualizer
 function doubleBarVisualizer() {
 
 	// equally split overall canvas width into total bars by the half of width
@@ -328,6 +345,7 @@ function doubleBarVisualizer() {
 	}				
 }
 
+// horizonatalBarVisualizer function
 function horizonatalBarVisualizer() {
 	
 	// clear everything in canvas drawing context
@@ -385,7 +403,8 @@ function horizonatalBarVisualizer() {
 
 }
 
-/* Circle Visualizers */
+/* Circle Visualizers Types */
+// circleVisualizer1 function
 function circleVisualizer1() {
 		
 	// clear everything in canvas drawing context
@@ -432,6 +451,7 @@ function circleVisualizer1() {
 	}				
 }
 
+// circleVisualizer2 function
 function circleVisualizer2() {
 
 	// clear everything in canvas drawing context
@@ -485,6 +505,7 @@ function circleVisualizer2() {
 	}				
 }
 
+// circleVisualizer3 function
 function circleVisualizer3() {
 
 	// clear everything in canvas drawing context
@@ -538,6 +559,7 @@ function circleVisualizer3() {
 	}				
 }
 
+// circleVisualizer4 function
 function circleVisualizer4() {
 
 	// clear everything in canvas drawing context
@@ -591,6 +613,7 @@ function circleVisualizer4() {
 	}				
 }
 
+// circleVisualizer5 function
 function circleVisualizer5() {
 
 	// clear everything in canvas drawing context
@@ -644,6 +667,7 @@ function circleVisualizer5() {
 	}				
 }
 
+// circleVisualizer6 function
 function circleVisualizer6() {
 
 	// clear everything in canvas drawing context
@@ -697,6 +721,7 @@ function circleVisualizer6() {
 	}				
 }
 
+// circleVisualizer7 function
 function circleVisualizer7() {
 	
 	// equally split overall canvas width into total bars
@@ -744,6 +769,7 @@ function circleVisualizer7() {
 	}				
 }
 
+// circleVisualizer8 function
 function circleVisualizer8() {
 	
 	// equally split overall canvas width into total bars
@@ -791,6 +817,7 @@ function circleVisualizer8() {
 	}				
 }
 
+// circleVisualizer9 function
 function circleVisualizer9() {
 	
 	// equally split overall canvas width into total bars
@@ -838,6 +865,7 @@ function circleVisualizer9() {
 	}				
 }
 
+// circleVisualizer10 function
 function circleVisualizer10() {
 	
 	// equally split overall canvas width into total bars
@@ -885,6 +913,7 @@ function circleVisualizer10() {
 	}				
 }
 
+// circleVisualizer11 function
 function circleVisualizer11() {	
 
 	// equally split overall canvas width into total bars
@@ -939,6 +968,7 @@ function circleVisualizer11() {
 	}				
 }
 
+// circleVisualizer12 function
 function circleVisualizer12() {	
 
 	// equally split overall canvas width into total bars
@@ -993,6 +1023,7 @@ function circleVisualizer12() {
 	}				
 }
 
+// circleVisualizer13 function
 function circleVisualizer13() {	
 
 	// equally split overall canvas width into total bars
@@ -1045,6 +1076,7 @@ function circleVisualizer13() {
 	}				
 }
 
+// circleVisualizer14 function
 function circleVisualizer14() {	
 
 	// equally split overall canvas width into total bars
@@ -1100,6 +1132,7 @@ function circleVisualizer14() {
 	}				
 }
 
+// circleVisualizer15 function
 function circleVisualizer15() {	
 
 	// equally split overall canvas width into total bars
@@ -1154,6 +1187,7 @@ function circleVisualizer15() {
 	}				
 }
 
+// circleVisualizer16 function
 function circleVisualizer16() {
 	
 	// clear everything in canvas drawing context
@@ -1202,6 +1236,7 @@ function circleVisualizer16() {
 	}				
 }
 
+// circleVisualizer17 function
 function circleVisualizer17() {
 	
 	// clear everything in canvas drawing context
@@ -1250,6 +1285,7 @@ function circleVisualizer17() {
 	}				
 }
 
+// circleVisualizer18 function
 function circleVisualizer18() {
 	
 	// clear everything in canvas drawing context
@@ -1298,6 +1334,7 @@ function circleVisualizer18() {
 	}				
 }
 
+// circleVisualizer19 function
 function circleVisualizer19() {
 	
 	// clear everything in canvas drawing context
@@ -1341,9 +1378,9 @@ function circleVisualizer19() {
 
 		x += barWidth;
 	}
-
 }
 
+// circleVisualizer20 function
 function circleVisualizer20() {
 	
 	// clear everything in canvas drawing context
@@ -1394,9 +1431,9 @@ function circleVisualizer20() {
 
 		x += barWidth;
 	}
-
 }
 
+// circleVisualizer21 function
 function circleVisualizer21() {
 	
 	// clear everything in canvas drawing context
@@ -1448,9 +1485,9 @@ function circleVisualizer21() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// circleVisualizer22 function
 function circleVisualizer22() {
 	
 	// clear everything in canvas drawing context
@@ -1502,9 +1539,9 @@ function circleVisualizer22() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// circleVisualizer23 function
 function circleVisualizer23() {
 	
 	// clear everything in canvas drawing context
@@ -1555,10 +1592,10 @@ function circleVisualizer23() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
-/* Wave Visualizers */
+/* Wave Visualizers Types */
+// waveVisualizer1 function
 function waveVisualizer1() {
 	
 	// clear everything in canvas drawing context
@@ -1594,9 +1631,9 @@ function waveVisualizer1() {
 
 		x += barWidth;
 	}
-
 }
 
+// waveVisualizer2 function
 function waveVisualizer2() {
 	
 	// clear everything in canvas drawing context
@@ -1631,9 +1668,9 @@ function waveVisualizer2() {
 		x += barWidth;
 
 	}
-
 }
 
+// waveVisualizer3 function
 function waveVisualizer3() {
 	
 	// clear everything in canvas drawing context
@@ -1668,9 +1705,9 @@ function waveVisualizer3() {
 		x += barWidth;
 
 	}
-
 }
 
+// waveVisualizer4 function
 function waveVisualizer4() {
 	
 	// clear everything in canvas drawing context
@@ -1713,9 +1750,9 @@ function waveVisualizer4() {
 
 		x += barWidth
 	}
-
 }
 
+// waveVisualizer5 function
 function waveVisualizer5() {
 	
 	// clear everything in canvas drawing context
@@ -1758,9 +1795,9 @@ function waveVisualizer5() {
 
 		x += barWidth
 	}
-
 }
 
+// waveVisualizer6 function
 function waveVisualizer6() {
 	
 	// clear everything in canvas drawing context
@@ -1808,9 +1845,9 @@ function waveVisualizer6() {
 
 		x += barWidth
 	}
-
 }
 
+// waveVisualizer7 function
 function waveVisualizer7() {
 	
 	// clear everything in canvas drawing context
@@ -1858,9 +1895,9 @@ function waveVisualizer7() {
 
 		x += barWidth
 	}
-
 }
 
+// waveVisualizer8 function
 function waveVisualizer8() {
 	
 	// clear everything in canvas drawing context
@@ -1906,9 +1943,9 @@ function waveVisualizer8() {
 		canvasCTX.restore();
 			
 	}
-
 }
 
+// waveVisualizer9 function
 function waveVisualizer9() {
 	
 	// clear everything in canvas drawing context
@@ -1956,9 +1993,9 @@ function waveVisualizer9() {
 	canvasCTX.lineTo(canvas.width, canvas.height / 2);
 	canvasCTX.stroke();		
 	canvasCTX.closePath();
-
 }
 
+// waveVisualizer10 function
 function waveVisualizer10() {
 	
 	// clear everything in canvas drawing context
@@ -2004,9 +2041,9 @@ function waveVisualizer10() {
 
 		x += barWidth;
 	}
-
 }
 
+// waveVisualizer11 function
 function waveVisualizer11() {
 	
 	// clear everything in canvas drawing context
@@ -2050,9 +2087,9 @@ function waveVisualizer11() {
 
 		x += barWidth;
 	}
-
 }
 
+// waveVisualizer12 function
 function waveVisualizer12() {
 	
 	// clear everything in canvas drawing context
@@ -2113,9 +2150,9 @@ function waveVisualizer12() {
 		x += barWidth;
 		
 	}
-
 }
 
+// waveVisualizer13 function
 function waveVisualizer13() {
 	
 	// clear everything in canvas drawing context
@@ -2176,9 +2213,9 @@ function waveVisualizer13() {
 		x += barWidth;
 		
 	}
-
 }
 
+// waveVisualizer14 function
 function waveVisualizer14() {
 	
 	// clear everything in canvas drawing context
@@ -2239,9 +2276,9 @@ function waveVisualizer14() {
 		x += barWidth;
 		
 	}
-
 }
 
+// waveVisualizer15 function
 function waveVisualizer15() {
 	
 	// clear everything in canvas drawing context
@@ -2302,9 +2339,9 @@ function waveVisualizer15() {
 		x += barWidth;
 		
 	}
-
 }
 
+// waveVisualizer16 function
 function waveVisualizer16() {
 	
 	// clear everything in canvas drawing context
@@ -2353,7 +2390,8 @@ function waveVisualizer16() {
 	}				
 }
 
-/* Rotation Visualizers */
+/* Rotation Visualizers Types */
+// rotationVisualizer1 function
 function rotationVisualizer1() {
 	
 	// clear everything in canvas drawing context
@@ -2414,9 +2452,9 @@ function rotationVisualizer1() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// rotationVisualizer2 function
 function rotationVisualizer2() {
 	
 	// clear everything in canvas drawing context
@@ -2477,9 +2515,9 @@ function rotationVisualizer2() {
 		x += Number(barWidth) - Number(i * 0.015);
 		
 	}
-
 }
 
+// rotationVisualizer3 function
 function rotationVisualizer3() {
 	
 	// clear everything in canvas drawing context
@@ -2540,9 +2578,9 @@ function rotationVisualizer3() {
 		x += Number(barWidth) - Number(i * 0.015);
 		
 	}
-
 }
 
+// rotationVisualizer4 function
 function rotationVisualizer4() {
 	
 	// clear everything in canvas drawing context
@@ -2603,9 +2641,9 @@ function rotationVisualizer4() {
 		x += Number(barWidth) - Number(i * 0.0215);
 		
 	}
-
 }
 
+// rotationVisualizer5 function
 function rotationVisualizer5() {
 	
 	// clear everything in canvas drawing context
@@ -2666,9 +2704,9 @@ function rotationVisualizer5() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// rotationVisualizer6 function
 function rotationVisualizer6() {
 	
 	// clear everything in canvas drawing context
@@ -2729,9 +2767,9 @@ function rotationVisualizer6() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// rotationVisualizer7 function
 function rotationVisualizer7() {
 	
 	// clear everything in canvas drawing context
@@ -2792,10 +2830,11 @@ function rotationVisualizer7() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
-/* Spiral Visualizers */
+/* Spiral Visualizers Types */
+
+// spiralVisualizer1 function
 function spiralVisualizer1() {
 	
 	// clear everything in canvas drawing context
@@ -2847,9 +2886,9 @@ function spiralVisualizer1() {
 		canvasCTX.restore();
 
 	}
-
 }
 
+// spiralVisualizer2 function
 function spiralVisualizer2() {
 	
 	// clear everything in canvas drawing context
@@ -2902,9 +2941,9 @@ function spiralVisualizer2() {
 		x += Number(barWidth);		
 		
 	}
-
 }
 
+// spiralVisualizer3 function
 function spiralVisualizer3() {
 	
 	// clear everything in canvas drawing context
@@ -2955,9 +2994,9 @@ function spiralVisualizer3() {
 		x += Number(barWidth);
 		
 	}
-
 }
 
+// spiralVisualizer4 function
 function spiralVisualizer4() {
 	
 	// clear everything in canvas drawing context
@@ -3013,6 +3052,7 @@ function spiralVisualizer4() {
 	}
 }
 
+// spiralVisualizer5 function
 function spiralVisualizer5() {
 	
 	// equally split overall canvas width into total bars
@@ -3064,6 +3104,7 @@ function spiralVisualizer5() {
 	}				
 }
 
+// spiralVisualizer6 function
 function spiralVisualizer6() {
 	
 	// equally split overall canvas width into total bars
@@ -3115,6 +3156,7 @@ function spiralVisualizer6() {
 	}				
 }
 
+// spiralVisualizer7 function
 function spiralVisualizer7() {
 	
 	// equally split overall canvas width into total bars
@@ -3166,6 +3208,7 @@ function spiralVisualizer7() {
 	}				
 }
 
+// spiralVisualizer8 function
 function spiralVisualizer8() {
 	
 	// clear everything in canvas drawing context
@@ -3211,6 +3254,7 @@ function spiralVisualizer8() {
 	}
 }
 
+// spiralVisualizer9 function
 function spiralVisualizer9() {
 	
 	// clear everything in canvas drawing context
@@ -3256,6 +3300,7 @@ function spiralVisualizer9() {
 	}
 }
 
+// spiralVisualizer10 function
 function spiralVisualizer10() {
 	
 	// clear everything in canvas drawing context
@@ -3301,6 +3346,7 @@ function spiralVisualizer10() {
 	}
 }
 
+// spiralVisualizer11 function
 function spiralVisualizer11() {
 	
 	// clear everything in canvas drawing context
@@ -3346,6 +3392,7 @@ function spiralVisualizer11() {
 	}
 }
 
+// spiralVisualizer12 function
 function spiralVisualizer12() {
 	
 	// clear everything in canvas drawing context
@@ -3391,6 +3438,7 @@ function spiralVisualizer12() {
 	}
 }
 
+// spiralVisualizer13 function
 function spiralVisualizer13() {
 	
 	// clear everything in canvas drawing context
@@ -3436,6 +3484,7 @@ function spiralVisualizer13() {
 	}
 }
 
+// spiralVisualizer14 function
 function spiralVisualizer14() {
 	
 	// clear everything in canvas drawing context
@@ -3489,8 +3538,10 @@ function spiralVisualizer14() {
 }
 
 /* event listeners */
+// audioInput change event listener
 audioInput.addEventListener('change', function(e) {
 
+	// check for any file uploaded 
 	if (audioInput.files.length == 0) {
 		alert('Please select audio file');
 		return false;
@@ -3498,6 +3549,7 @@ audioInput.addEventListener('change', function(e) {
 
 	// setting audio file src to audio control
 	audioControl.src = URL.createObjectURL(audioInput.files[0]);
+	
 	// loading audio control
 	audioControl.load();
 	audioControl.play();
@@ -3507,51 +3559,66 @@ audioInput.addEventListener('change', function(e) {
 
 });
 
+// playButton click event listener
 playButton.addEventListener('click', function(e) {
+	// getting current state from button text
 	let state = playButton.innerText.toLowerCase();
 
+	// check for any audio file exist for play
 	if (prefObj.audio == null) {
 		alert('Please upload audio file');
 		return;
 	}
 
+	// if it is paused state then change button text as Pause and play the audio
 	if (state == 'play') {
 		playButton.innerText = 'Pause';
 		prefObj.audio.play();
 		return;
 	}
 
+	// if it is play state then change button text as Play and pause the audio
 	playButton.innerText = 'Play';	
 	prefObj.audio.pause();
 
 });
 
+// recordButton click event listener
 recordButton.addEventListener('click', function(e) {
+	// getting current state from button text
 	let state = recordButton.innerText.toLowerCase();
 
+	// check for any audio file exist for record visualization
 	if (prefObj.audio == null) {
 		alert('Please upload audio file');
 		return;
 	}
 
+	// if it is stopped stage then start capturing and change the button text as stop record
 	if (state == 'start record') {
-
+		// creating and setting stream captureStream with given fps value
 		prefObj.stream = canvas.captureStream(fps.value);
+		// creating and setting MediaRecorder with created stream input
 		prefObj.recorder = new MediaRecorder(prefObj.stream);
-
+		// initialize with empty value for recording
 		prefObj.videoChunks = [];
 		prefObj.recorderTimes = [];
-		// setting events to recorder
+		// setting events to store video chunks
 		prefObj.recorder.ondataavailable = (e) => prefObj.videoChunks.push(e.data);
+		// setting events to stop
 		prefObj.recorder.onstop = () => {
+			// creating and setting new Blob from chunks with supported video file type
 			const videoBlob = new Blob(prefObj.videoChunks, { type: 'video/webm' });
+			// creating and setting objectURL for download 
 			const videoUrl = URL.createObjectURL(videoBlob);
 
+			// initialize variables for file name with audio time
 			let hh = 0;
 			let mm = 0;
 			let ss = 0;
 			let ms = 0;
 			
+			// getting startTime in the format hh_mm_ss_ms
 			let startTime = prefObj.recorderTimes[0];
 			hh = Math.floor(startTime / (60 * 60));
 			mm = Math.floor((startTime / 60) % 60);
@@ -3559,6 +3626,7 @@ recordButton.addEventListener('click', function(e) {
 			ms = Math.floor(((startTime % 60) - ss) * 100);
 			startTime = `${hh}_${mm}_${ss}_${ms}`;
 			
+			// getting endTime in the format hh_mm_ss_ms
 			let endTime = prefObj.recorderTimes[1];
 			hh = Math.floor(endTime / (60 * 60));
 			mm = Math.floor((endTime / 60) % 60);
@@ -3577,76 +3645,94 @@ recordButton.addEventListener('click', function(e) {
 
 		};
 
+		// setting startTime into recorderTimes array
 		prefObj.recorderTimes.push(audioControl.currentTime);
+		// starting recorder
 		prefObj.recorder.start();
+		// setting button text as stop record
 		recordButton.innerText = 'Stop Record';	
 
-	} else if (state == 'stop record'){
-
+	} else if (state == 'stop record'){ // if it is recording stage then stop capturing and change the button text as start record
+		// setting endTime into recorderTimes array
 		prefObj.recorderTimes.push(audioControl.currentTime);
+		// stopping recorder
 		prefObj.recorder.stop();
+		// setting button text as start record
 		recordButton.innerText = 'Start Record';
-
 	}
 
 });
 
+// audioControl playing event listener
 audioControl.addEventListener('playing', function(e) {
 	playButton.innerText = 'Pause';
 	startVisualizer(prefObj);
 });
 
+// audioControl pause event listener
 audioControl.addEventListener('pause', function(e) {
 	playButton.innerText = 'Play';
 	stopVisualizer(prefObj);
 });
 
+// audioControl ended event listener
 audioControl.addEventListener('ended', function(e) { 
 	playButton.innerText = 'Play';
 	stopVisualizer(prefObj);
 });
 
+// visualizerType change event listener
 visualizerType.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.visualizerType', visualizerType.value);
 });
 
+// fftBand change event listener
 fftBand.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.fftBand', fftBand.value);
 });
 
+// canvasWidth input event listener
 canvasWidth.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.canvasWidth', canvasWidth.value);
 });
 
+// canvasHeight input event listener
 canvasHeight.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.canvasHeight', canvasHeight.value);
 });
 
+// animationScale input event listener
 animationScale.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.animationScale', animationScale.value);
 });
 
+// fps input event listener
 fps.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.fps', fps.value);
 });
 
+// foregroundColorType change event listener
 foregroundColorType.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.foregroundColorType', foregroundColorType.value);
 });
 
+// foregroundColor change event listener
 foregroundColor.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.foregroundColor', foregroundColor.value);
 });
 
+// backgroundColor change event listener
 backgroundColor.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.backgroundColor', backgroundColor.value);
 });
 
 /* onload event listener */
 window.addEventListener('load', function() {
-
+	// setting old preference from localStorage
 	setPreference();
+	// setting CanvasSize
 	setCanvasSize();
+	// setting CanvasBackground
 	setCanvasBackground();
 
 }, false);

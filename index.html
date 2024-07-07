@@ -16,6 +16,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+	<!-- Styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" integrity="sha512-usVBAd66/NpVNfBge19gws2j6JZinnca12rAe2l+d+QkLU9fiG02O1X8Q6hepIpr/EYKZvKx/I9WsnujJuOmBA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="all" />
 
 	<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap.css" media="all" />
@@ -24,15 +25,20 @@
 </head>
 <body>
 
+	<!-- Visualizer Section -->
 	<section class="container-fluid">
 		
+		<!-- Visualizer Form -->
 		<form class="row my-4" action="#" onsubmit="return false;">
 			
+			<!-- Audio Input Field -->
 			<div class="col-12 mb-3">
 				<label for="audioInput">Audio Input</label>
 				<input type="file" name="audioInput" id="audioInput" class="form-control" accept="audio/*" autofocus />
 			</div>
+			<!-- ./ Audio Input Field -->
 
+			<!-- Visualizer Type Select Field -->
 			<div class="col-md-6 mb-3">
 				<label for="visualizerType">Visualizer Type</label>
 				<select name="visualizerType" id="visualizerType" class="form-control">
@@ -111,12 +117,13 @@
 					</optgroup>
 				</select>
 			</div>
+			<!-- ./ Visualizer Type Select Field -->
 
-			<!-- fft band size -->
+			<!-- FFT Band Size Select Field -->
 			<div class="col-md-6 mb-3">
 				<label for="fftBand">FFT Band Size</label>
 				<select name="fftBand" id="fftBand" class="form-control">
-					<option value="32" selected>32 (Best performance)</option>
+					<option value="32">32 (Best performance)</option>
 					<option value="64">64 (Recommended)</option>
 					<option value="128">128</option>
 					<option value="256">256</option>
@@ -129,78 +136,101 @@
 					<option value="32768">32768 (More Details)</option>				
 				</select>
 			</div>
+			<!-- ./ FFT Band Size Select Field -->
 
-			<!-- Canvas width -->
+			<!-- Canvas Width Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="canvasWidth">Width</label>
 				<input type="number" name="canvasWidth" id="canvasWidth" class="form-control" min="100" value="774" />
 			</div>
+			<!-- ./ Canvas Width Input Field -->
 
-			<!-- Canvas Height -->
+			<!-- Canvas Height Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="canvasHeight">Height</label>
 				<input type="number" name="canvasHeight" id="canvasHeight" class="form-control" min="100" value="1376" />
 			</div>
+			<!-- ./ Canvas Height Input Field -->
 
-			<!-- animation scale -->
+			<!-- Animation Scale Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="animationScale">Animation Scale</label>
 				<input type="number" name="animationScale" id="animationScale" class="form-control" min="100" value="100" />
 			</div>
+			<!-- ./ Animation Scale Input Field -->
 
-			<!-- fps -->
+			<!-- FPS Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="fps">FPS</label>
 				<input type="number" name="fps" id="fps" class="form-control" min="10" value="30" />
 			</div>
+			<!-- ./ FPS Input Field -->
 
-			<!-- Foreground color type -->
+			<!-- Foreground Color Type Select Field -->
 			<div class="col-md-6 mb-3">
 				<label for="foregroundColorType">Foreground Color Type</label>
 				<select name="foregroundColorType" id="foregroundColorType" class="form-control">
-					<option value="dynamic" selected>Dynamic</option>
+					<option value="dynamic">Dynamic</option>
 					<option value="fixed">Fixed</option>
 				</select>
 			</div>
+			<!-- ./ Foreground Color Type Select Field -->
 
-			<!-- text color -->
+			<!-- Foreground Color Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="foregroundColor">Foreground Color</label>
 				<input type="color" name="foregroundColor" id="foregroundColor" class="form-control" value="#ffffff" />
 			</div>
+			<!-- ./ Foreground Color Input Field -->
 
-			<!-- background color -->
+			<!-- Background Color Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="backgroundColor">Background Color</label>
 				<input type="color" name="backgroundColor" id="backgroundColor" class="form-control" value="#000000" />
 			</div>
+			<!-- ./ Background Color Input Field -->
 
+			<!-- Horizontal Divider -->
 			<div class="col-12 mb-3">
 				<hr class="w-100" />
 			</div>
+			<!-- ./ Horizontal Divider -->
 
-			<!-- Play Button -->
+			<!-- Buttons Section -->
 			<div class="col-md-12 text-center mb-3">
+				<!-- Play Button -->
 				<button type="button" id="playButton" class="btn btn-outline-primary">Play</button>
-			
+				<!-- ./ Play Buttons -->
+				<!-- Record Button -->
 				<button type="button" id="recordButton" class="btn btn-outline-danger" data-state='stopped'>Start Record</button>
+				<!-- ./ Record Button -->
 			</div>
+			<!-- ./ Buttons Section -->
 
+			<!-- Audio Control -->
 			<div class="col-12 mb-3">
 				<audio id="audio1" class="w-100" controls></audio>
 			</div>
+			<!-- ./ Audio Control -->
 
+			<!-- Canvas Container -->
 			<div class="col-md-12 w-100 overflow-auto mb-3">
 				<canvas id="canvas1"></canvas>
 			</div>
+			<!-- ./ Canvas Container -->
 
 		</form>
+		<!-- ./ Visualizer Form -->
 
 	</section>
+	<!-- ./ Visualizer Section -->
 
+	<!-- Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js" integrity="sha512-72WD92hLs7T5FAXn3vkNZflWG6pglUDDpm87TeQmfSg8KnrymL2G30R7as4FmTwhgu9H7eSzDCX3mjitSecKnw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 	<script type="text/javascript" src="../bootstrap/bootstrap.bundle.js"></script>
+
+	<!-- Main Script -->
 	<script type="text/javascript" src="./main.js"></script>
 </body>
 </html>
