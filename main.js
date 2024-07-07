@@ -37,6 +37,7 @@ const backgroundColor = document.getElementById('backgroundColor');
 
 const playButton = document.getElementById('playButton');
 const recordButton = document.getElementById('recordButton');
+const fullScreen = document.getElementById('fullScreen');
 
 const audioControl = document.getElementById('audio1');
 const canvas = document.getElementById('canvas1'); 
@@ -3724,6 +3725,11 @@ foregroundColor.addEventListener('change', function(e) {
 // backgroundColor change event listener
 backgroundColor.addEventListener('change', function(e) {
 	setLocalStorage('visualizer.backgroundColor', backgroundColor.value);
+});
+
+// fullScreen click event listener
+fullScreen.addEventListener('click', function(e) {
+	canvas.requestFullscreen();
 });
 
 /* onload event listener */
