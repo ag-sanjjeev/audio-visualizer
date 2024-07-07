@@ -19,7 +19,10 @@
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" integrity="sha512-usVBAd66/NpVNfBge19gws2j6JZinnca12rAe2l+d+QkLU9fiG02O1X8Q6hepIpr/EYKZvKx/I9WsnujJuOmBA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="all" />
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" media="all" />
+
 	<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../icons/fontawesome/css/all.css" media="all" />
 
 	<title>Audio Visualizer</title>
 </head>
@@ -141,14 +144,24 @@
 			<!-- Canvas Width Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="canvasWidth">Width</label>
-				<input type="number" name="canvasWidth" id="canvasWidth" class="form-control" min="100" value="774" />
+				<div class="input-group">
+					<input type="number" name="canvasWidth" id="canvasWidth" class="form-control" min="100" value="774" />
+					<button type="button" id="setDeviceWidthButton" class="btn btn-outline-secondary" title="set current device width">
+						<i class="fa fa-bullseye"></i>
+					</button>
+				</div>
 			</div>
 			<!-- ./ Canvas Width Input Field -->
 
 			<!-- Canvas Height Input Field -->
 			<div class="col-md-6 mb-3">
 				<label for="canvasHeight">Height</label>
-				<input type="number" name="canvasHeight" id="canvasHeight" class="form-control" min="100" value="1376" />
+				<div class="input-group">
+					<input type="number" name="canvasHeight" id="canvasHeight" class="form-control" min="100" value="1376" />
+					<button type="button" id="setDeviceHeightButton" class="btn btn-outline-secondary" title="set current device height">
+						<i class="fa fa-bullseye"></i>
+					</button>					
+				</div>
 			</div>
 			<!-- ./ Canvas Height Input Field -->
 

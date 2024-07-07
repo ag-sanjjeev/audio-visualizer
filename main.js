@@ -35,6 +35,8 @@ const foregroundColorType = document.getElementById('foregroundColorType');
 const foregroundColor = document.getElementById('foregroundColor');
 const backgroundColor = document.getElementById('backgroundColor');
 
+const setDeviceWidthButton = document.getElementById('setDeviceWidthButton');
+const setDeviceHeightButton = document.getElementById('setDeviceHeightButton');
 const playButton = document.getElementById('playButton');
 const recordButton = document.getElementById('recordButton');
 const fullScreen = document.getElementById('fullScreen');
@@ -3697,9 +3699,19 @@ canvasWidth.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.canvasWidth', canvasWidth.value);
 });
 
+// setDeviceWidthButton click event listener 
+setDeviceWidthButton.addEventListener('click', function(e) {
+	canvasWidth.value = window.outerWidth;
+});
+
 // canvasHeight input event listener
 canvasHeight.addEventListener('input', function(e) {
 	setLocalStorage('visualizer.canvasHeight', canvasHeight.value);
+});
+
+// setDeviceHeightButton click event listener 
+setDeviceHeightButton.addEventListener('click', function(e) {
+	canvasHeight.value = window.outerHeight;
 });
 
 // animationScale input event listener
